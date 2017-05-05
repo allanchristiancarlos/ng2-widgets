@@ -1,1 +1,1 @@
-### Angular Starter Plunker - Typescript
+FOR TESTING ONLY NOT A LIBRARY
