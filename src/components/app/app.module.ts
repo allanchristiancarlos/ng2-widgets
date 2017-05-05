@@ -8,11 +8,12 @@ import { Ng2HighchartsModule } from "ng2-highcharts";
 
 // App
 import { AppComponent } from './app.component';
-import { WidgetModule } from "./components/widget/widget.module";
-import { WidgetPieChartModule } from "./components/widget-pie-chart/widget-pie-chart.module";
-import { WidgetVisitsModule } from "./components/widget-visits/widget-visits.module";
-import { WidgetStockChartModule } from "./components/widget-stock-chart/widget-stock-chart.module";
-import { WidgetHeatmapModule } from "./components/widget-heatmap/widget-heatmap.module";
+import { WidgetModule } from "../widget/widget.module";
+import { WidgetPieChartModule } from "../widget-pie-chart/widget-pie-chart.module";
+import { WidgetVisitsModule } from "../widget-visits/widget-visits.module";
+import { WidgetStockChartModule } from "../widget-stock-chart/widget-stock-chart.module";
+import { WidgetHeatmapModule } from "../widget-heatmap/widget-heatmap.module";
+import { WidgetManagerModule } from "../widget-manager/widget-manager.module";
 
 @NgModule({
   imports: [  
@@ -24,7 +25,8 @@ import { WidgetHeatmapModule } from "./components/widget-heatmap/widget-heatmap.
     WidgetVisitsModule,
     WidgetPieChartModule,
     WidgetStockChartModule,
-    WidgetHeatmapModule
+    WidgetHeatmapModule,
+    WidgetManagerModule
   ],
   declarations: [
     AppComponent

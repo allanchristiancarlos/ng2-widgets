@@ -7,7 +7,7 @@ import { WidgetComponent } from "../widget/widget.component";
 export class WidgetHeatmapComponent implements WidgetComponent, OnInit {
 	data: any;
 	chart: object;
-    title = "Stock Chart";
+    title = "Heatmap";
 
     ngOnInit(): void {
 		this.chart = {

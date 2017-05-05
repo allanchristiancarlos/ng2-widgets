@@ -5,5 +5,5 @@ export interface WidgetComponent {
         height?: number,
         width?: number
     },
-    type: string;
+    type?: string;
 }
