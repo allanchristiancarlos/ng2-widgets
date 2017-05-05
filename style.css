@@ -1,0 +1,48 @@
+/* Styles go here */
+
+app,
+widgets {
+  display: block;
+  font-family: arial, sans-serif;
+}
+
+body {
+  background: #212121;
+  padding: 10px 0 30px;
+}
+
+.page-header {
+  color: #fff;
+}
+
+.grid-stack-item-content {
+  font-family: arial, sans-serif;
+}
+
+.widget {
+  overflow: auto;
+}
+
+.widget__title {
+  position: relative;
+  margin: 0;
+  padding: 12px;
+  background: #2196f3;
+  color: #fff;
+  font-size: .9em;
+}
+
+.widget__handle {
+    position: absolute;
+    top: 12px;
+    font-size: 18px;
+    font-weight: 300 !important;
+    right: 10px;
+    cursor: move;
+}
+
+.widget__body {
+  padding: 8px;
+  background: white;
+  font-size: 14px;
+}

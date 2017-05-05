@@ -1,0 +1,10 @@
+<div *ngFor="let widget of widgets" app-widget
+    [attr.data-gs-width]="widget.size.width" 
+    [attr.data-gs-height]="widget.size.height" 
+    [attr.data-gs-x]="widget.position.x" 
+    [attr.data-gs-y]="widget.position.y" 
+    [title]="widget.title">
+    <app-widget-chart-pie *ngIf="widget.type === widgetType.PieChartWidgetType" [widget]="widget"></app-widget-chart-pie>
+    <app-widget-chart-stock *ngIf="widget.type === widgetType.StockChartWidgetType" [widget]="widget"></app-widget-chart-stock>
+    <app-widget-chart-heatmap *ngIf="widget.type === widgetType.HeatMapWidgetType" [widget]="widget"></app-widget-chart-heatmap>
+</div>

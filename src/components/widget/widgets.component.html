@@ -1,0 +1,9 @@
+<div *ngFor="let widget of widgets" class="grid-stack-item"
+    [attr.data-gs-width]="widget.size.width" 
+    [attr.data-gs-height]="widget.size.height" 
+    [attr.data-gs-x]="widget.position.x" 
+    [attr.data-gs-y]="widget.position.y">
+    <div class="grid-stack-item-content">
+        <widget [widget]="widget"></widget>
+    </div>
+</div>
