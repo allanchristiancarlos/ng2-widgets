@@ -1,4 +1,4 @@
-import { AfterViewInit, ViewChild, Input, ComponentFactoryResolver, Component, HostBinding } from "@angular/core";
+import { AfterViewInit, ViewChild, Input, ComponentFactoryResolver, Component, HostBinding, EventEmitter, Output } from "@angular/core";
 import { WidgetComponent } from "./widget.component";
 import { WidgetDirective } from "./widget.directive";
 import { WidgetModel } from "./widget.model";
@@ -19,6 +19,9 @@ export class WidgetLoaderComponent implements AfterViewInit {
     @ViewChild(WidgetDirective)
     widgetRef: WidgetDirective;
 
+    @Output()
+    onDelete: EventEmitter<any> = new EventEmitter();
+
     constructor(private _componentFactoryResolver: ComponentFactoryResolver) { }
 
     ngAfterViewInit() {
@@ -35,5 +38,11 @@ export class WidgetLoaderComponent implements AfterViewInit {
         component.widget = widget;
 
         this.title = this.title || widget.title || component.title;
+    }
+
+    onDeleteClicked() {
+        if (this.onDelete) {
+            this.onDelete.emit(this.widget);
+        }
     }
 }

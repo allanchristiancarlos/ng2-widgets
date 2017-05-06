@@ -1,6 +1,6 @@
 import { Type } from "@angular/core";
 
-export class WidgetModel {
+export interface WidgetModel {
     id: number;
     title?: string;
     type: string;

@@ -27,18 +27,32 @@ body {
   position: relative;
   margin: 0;
   padding: 12px;
-  background: #2196f3;
+  background: #607d8b;
   color: #fff;
   font-size: .9em;
 }
 
-.widget__handle {
-    position: absolute;
-    top: 12px;
-    font-size: 18px;
-    font-weight: 300 !important;
-    right: 10px;
-    cursor: move;
+.widget__actions {
+  position: absolute;
+  top: 12px;
+  right: 10px;
+}
+
+.widget__action {
+  cursor: pointer;
+}
+
+.widget__action.material-icons {
+  font-size: 18px;
+  font-weight: 300 !important;
+}
+
+.widget__action-handle {    
+  cursor: move;
+}
+
+.widget__action-delete {
+  color: #f44336;
 }
 
 .widget__body {

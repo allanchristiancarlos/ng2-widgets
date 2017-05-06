@@ -1,9 +1,10 @@
 <div *ngFor="let widget of widgets" class="grid-stack-item"
+    [attr.data-widget-id]="widget.id"
     [attr.data-gs-width]="widget.size.width" 
     [attr.data-gs-height]="widget.size.height" 
     [attr.data-gs-x]="widget.position.x" 
     [attr.data-gs-y]="widget.position.y">
     <div class="grid-stack-item-content">
-        <widget [widget]="widget"></widget>
+        <widget [widget]="widget" (onDelete)="onWidgetDelete($event)"></widget>
     </div>
 </div>

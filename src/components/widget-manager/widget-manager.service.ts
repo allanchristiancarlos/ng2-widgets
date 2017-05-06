@@ -9,7 +9,6 @@ import 'rxjs/add/operator/map';
 
 // App
 import { WidgetModel } from "../widget/widget.model";
-import { WidgetManagerWidgetModel } from "./widget.model";
 import { WidgetManagerStorageLocal } from "./widget-manager-storage-local";
 import { WidgetManagerComponentTypeResolver } from "./widget-manager-component-type-resolver";
 
@@ -24,6 +23,10 @@ export class WidgetManagerService {
     getWidgets(): Observable<WidgetModel[]> {
         return this._storage.getAllWidgets()
                 .map(widgets => {
+                    if (typeof widgets !== "object") {
+                        return [];
+                    }
+                    
                     return widgets.map((widget) => {
                         widget.component = this._componentTypeResolver.resolve(widget.type);
                         return widget;
@@ -31,11 +34,15 @@ export class WidgetManagerService {
                 });
     }
 
-    addWidget(widget: WidgetManagerWidgetModel): Observable<boolean> {
+    addWidget(widget: WidgetModel): Observable<boolean> {
         return this._storage.addWidget(widget);
     }
 
     deleteByWidgetId(widgetId: number): Observable<boolean> {
         return this._storage.deleteByWidgetId(widgetId);
+    }
+    
+    updateWidget(widget: WidgetModel): Observable<boolean> {
+        return this._storage.updateWidget(widget);
     }
 }

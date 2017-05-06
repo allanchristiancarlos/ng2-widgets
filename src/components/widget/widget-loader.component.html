@@ -1,5 +1,10 @@
 
-<h3 class="widget__title">{{title}} <span class="widget__handle material-icons">open_with</span></h3>
+<h3 class="widget__title">{{title}} 
+    <span class="widget__actions">
+        <span class="widget__action widget__action-delete material-icons" (click)="onDeleteClicked($event)">delete</span>
+        <span class="widget__action widget__action-handle material-icons">open_with</span>
+    </span>
+</h3>
 <div class="widget__body">
     <ng-template widget></ng-template>
 </div>

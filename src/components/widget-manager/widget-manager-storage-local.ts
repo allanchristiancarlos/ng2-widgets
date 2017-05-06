@@ -3,6 +3,9 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 import { WidgetModel } from "../widget/widget.model";
 import { Observer } from "rxjs/Observer";
+import 'rxjs/add/operator/map';
+
+const WIDGET_MANAGER_STORAGE_LOCAL_KEY = "widgets";
 
 let WIDGET_MANAGER_DEFAULT_WIDGETS: WidgetModel[] = [
     {id: 1, title: "My Pie Chart", type: 'pie_chart', data: {chart: {title: 'Top Browsers 2015' }}, position: {x: 0}, size: {height: 3, width: 4}},
@@ -18,14 +21,52 @@ export class WidgetManagerStorageLocal implements IWidgetManagerStorage {
 
     getAllWidgets(): Observable<WidgetModel[]> {
         return new Observable((observer: Observer<any>) => {
-            observer.next(WIDGET_MANAGER_DEFAULT_WIDGETS);
+            let widgetsString = localStorage.getItem(WIDGET_MANAGER_STORAGE_LOCAL_KEY);
+            let widgets = [];
+
+            if (!widgetsString) {
+                localStorage.setItem(
+                    WIDGET_MANAGER_STORAGE_LOCAL_KEY, 
+                    JSON.stringify(WIDGET_MANAGER_DEFAULT_WIDGETS));
+                widgets = WIDGET_MANAGER_DEFAULT_WIDGETS;
+            } else {
+                widgets = JSON.parse(widgetsString);
+            }
+            observer.next(widgets);
         });
     }
 
     addWidget(widget: WidgetModel): Observable<boolean> {
         return new Observable((observer: Observer<any>) => {
-            WIDGET_MANAGER_DEFAULT_WIDGETS.push(widget);
-            observer.next(true);
+            this.getAllWidgets()
+                .subscribe(
+                    widgets => {
+                        widgets.push(widget);
+                        localStorage.setItem(WIDGET_MANAGER_STORAGE_LOCAL_KEY, JSON.stringify(widgets));
+                        observer.next(true);
+                    }
+                )
+        });
+    }
+
+    updateWidget(widget: WidgetModel): Observable<boolean> {
+        return new Observable((observer: Observer<any>) => {
+            this.getAllWidgets()
+                .map(widgets => {
+                    return widgets.map(w => {
+                        if (w.id == widget.id) {
+                            return widget;
+                        }
+
+                        return w;
+                    })
+                })
+                .subscribe(
+                    widgets => {
+                        localStorage.setItem(WIDGET_MANAGER_STORAGE_LOCAL_KEY, JSON.stringify(widgets));
+                        observer.next(true);
+                    }
+                )
         });
     }
 
@@ -34,7 +75,9 @@ export class WidgetManagerStorageLocal implements IWidgetManagerStorage {
             this.getAllWidgets()
                 .subscribe(
                     widgets => {
-                        WIDGET_MANAGER_DEFAULT_WIDGETS = widgets.filter(widget => widget.id !== widgetId);
+                        localStorage.setItem(
+                            WIDGET_MANAGER_STORAGE_LOCAL_KEY, 
+                            JSON.stringify(widgets.filter(widget => widget.id !== widgetId)));
                         observer.next(true);
                     },
                     error => {
