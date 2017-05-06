@@ -1,11 +1,16 @@
 import { Component, AfterViewInit, OnInit } from "@angular/core";
+import { WidgetModel } from "../widget/widget.model";
 import { WidgetComponent } from "../widget/widget.component";
 
 @Component({
     template: '<div [ng2-highcharts]="chart" class="graph"></div>'
 })
 export class WidgetHeatmapComponent implements WidgetComponent, OnInit {
-	data: any;
+	type: string;
+	widget: WidgetModel;
+	position: { x: number; y: number; };
+	size: { height: number; width: number; };
+
 	chart: object;
     title = "Heatmap";
 
@@ -20,7 +25,7 @@ export class WidgetHeatmapComponent implements WidgetComponent, OnInit {
 
 
 			title: {
-				text: this.data.chart.title
+				text: this.widget.data.chart.title
 			},
 
 			xAxis: {

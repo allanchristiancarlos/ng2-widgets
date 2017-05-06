@@ -1,13 +1,17 @@
 import { Component, AfterViewInit, OnInit } from "@angular/core";
-import { WidgetComponent } from "../widget/widget.component";
+import { WidgetModel } from "../widget/widget.model";
 import { WidgetStockChartService } from "./widget-stock-chart.service";
+import { WidgetComponent } from "../widget/widget.component";
 
 @Component({
     template: '<div [ng2-highcharts]="chart" class="graph"></div>'
 })
 export class WidgetStockChartComponent implements WidgetComponent, OnInit {
-	data: any;
+	widget: WidgetModel;
+	position: { x: number; y: number; };
+	size: { height: number; width: number; };
 	chart: object;
+	type: string;
     title = "Stock Chart";
 
 	constructor(
@@ -16,7 +20,7 @@ export class WidgetStockChartComponent implements WidgetComponent, OnInit {
 
     ngOnInit(): void {
 
-		let stockCode = this.data.stockCode;
+		let stockCode = this.widget.data.stockCode;
 		this._service.getStock(stockCode)
 			.subscribe(
 				data => {

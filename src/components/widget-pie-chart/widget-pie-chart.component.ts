@@ -1,14 +1,18 @@
 import { Component, AfterViewInit, OnInit } from "@angular/core";
+import { WidgetModel } from "../widget/widget.model";
 import { WidgetComponent } from "../widget/widget.component";
 
 @Component({
     template: '<div [ng2-highcharts]="chart" class="graph"></div>'
 })
 export class WidgetPieChartComponent implements WidgetComponent, OnInit {
+	widget: WidgetModel;
+	position: { x: number; y: number; };
+	size: { height: number; width: number; };
 	type = "pie_chart";
-	data: any;
-	chart: object;
     title = "Pie Chart";
+
+	chart: object;
 
     ngOnInit(): void {
 		this.chart = {
@@ -18,7 +22,7 @@ export class WidgetPieChartComponent implements WidgetComponent, OnInit {
 				height: 220
 			},
 			title:{
-				text: this.data.chart.title || "",
+				text: this.widget.data.chart.title || "",
 				align:'center',
 				verticalAlign:'middle',
 				y:40

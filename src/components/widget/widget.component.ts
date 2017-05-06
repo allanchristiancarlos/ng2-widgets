@@ -1,9 +1,19 @@
+import { Type } from "@angular/core";
+import { WidgetModel } from "./widget.model";
+
 export interface WidgetComponent {
-    data: any;
-    title?: string;
-    size?: {
-        height?: number,
-        width?: number
-    },
-    type?: string;
+    title: string;
+    type: string;
+
+    widget?: WidgetModel;
+
+    position: {
+        x: number,
+        y: number
+    };
+    
+    size: {
+        height: number,
+        width: number
+    };
 }

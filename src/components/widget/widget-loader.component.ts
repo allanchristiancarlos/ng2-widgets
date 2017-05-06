@@ -1,7 +1,7 @@
 import { AfterViewInit, ViewChild, Input, ComponentFactoryResolver, Component, HostBinding } from "@angular/core";
-import { Widget } from "./widget";
-import { WidgetDirective } from "./widget.directive";
 import { WidgetComponent } from "./widget.component";
+import { WidgetDirective } from "./widget.directive";
+import { WidgetModel } from "./widget.model";
 
 @Component({
     selector: 'widget',
@@ -14,7 +14,7 @@ export class WidgetLoaderComponent implements AfterViewInit {
     title: string;
 
     @Input()
-    widget: Widget;
+    widget: WidgetModel;
 
     @ViewChild(WidgetDirective)
     widgetRef: WidgetDirective;
@@ -30,9 +30,10 @@ export class WidgetLoaderComponent implements AfterViewInit {
         let widget = this.widget;
 
         let factory = this._componentFactoryResolver.resolveComponentFactory(widget.component);
-        let componentRef = viewContainerRef.createComponent(factory);
-        let component: WidgetComponent = componentRef.instance;
-        component.data = widget.data;
-        this.title = this.title || component.title;
+        let component: WidgetComponent = viewContainerRef.createComponent(factory).instance;
+        
+        component.widget = widget;
+
+        this.title = this.title || widget.title || component.title;
     }
 }

@@ -1,5 +1,5 @@
 import { Component, Input, HostBinding, AfterViewInit, ElementRef } from "@angular/core";
-import { Widget } from "./widget";
+import { WidgetModel } from "./widget.model";
 
 @Component({
     selector: 'widgets',
@@ -10,7 +10,7 @@ export class WidgetsComponent implements AfterViewInit {
     class = 'grid-stack';
 
     @Input()
-    widgets: Widget[];
+    widgets: WidgetModel[];
 
     constructor(
         private el: ElementRef

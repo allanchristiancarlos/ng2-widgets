@@ -1,14 +1,18 @@
+import { Type } from "@angular/core";
 
-export interface WidgetManagerWidgetModel {
+export class WidgetModel {
     id: number;
+    title?: string;
     type: string;
-    data: any;
+    data: any; 
+    component?: Type<any>;
     position?: {
         x?: number,
         y?: number
-    },
+    };
+    
     size?: {
         height?: number,
         width?: number
-    }
+    };
 }
