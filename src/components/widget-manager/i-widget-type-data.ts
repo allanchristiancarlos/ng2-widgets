@@ -6,4 +6,8 @@ export interface IWidgetTypeData {
     type: string;
     icon?: string;
     component: Type<WidgetComponent>;
+    defaultSize: {
+        width: number,
+        height: number
+    }
 }

@@ -1,5 +1,6 @@
 import { Type, Injectable } from "@angular/core";
 import { WidgetManagerWidgetTypesService } from "./widget-manager-widget-types.service";
+import { IWidgetTypeData } from "./i-widget-type-data";
 
 @Injectable()
 export class WidgetManagerComponentTypeResolver {
@@ -7,8 +8,8 @@ export class WidgetManagerComponentTypeResolver {
         public _widgetTypesService: WidgetManagerWidgetTypesService
     ) {}
     
-    resolve(type: string) : Type<any> {
+    getWidgetType(type: string) : IWidgetTypeData {
         return this._widgetTypesService.getAll()
-            .find(widgetType => widgetType.type === type).component;
+            .find(widgetType => widgetType.type === type);
     }
 }

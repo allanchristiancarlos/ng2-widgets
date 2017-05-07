@@ -29,7 +29,11 @@ export class WidgetHeatmapModule {
         this._widgetManagerSerivce.registerWidgetType({
             name: 'Heat Map',
             type: 'heatmap',
-            component: WidgetHeatmapComponent
+            component: WidgetHeatmapComponent,
+            defaultSize: {
+                width: 12,
+                height: 4
+            }
         });
     }
 }

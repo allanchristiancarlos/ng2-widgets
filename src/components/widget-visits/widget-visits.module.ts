@@ -21,7 +21,11 @@ export class WidgetVisitsModule {
         this._widgetManagerSerivce.registerWidgetType({
             name: 'Visits',
             type: 'visits',
-            component: WidgetVisitsComponent
+            component: WidgetVisitsComponent,
+            defaultSize: {
+                width: 6,
+                height: 3
+            }
         });
     }
 }

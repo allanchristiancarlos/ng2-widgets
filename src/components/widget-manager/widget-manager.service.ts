@@ -32,13 +32,25 @@ export class WidgetManagerService {
                     }
                     
                     return widgets.map((widget) => {
-                        widget.component = this._componentTypeResolver.resolve(widget.type);
+                        widget.component = this._componentTypeResolver.getWidgetType(widget.type).component;
                         return widget;
                     })
                 });
     }
 
     addWidget(widget: WidgetModel): Observable<boolean> {
+        let widgetType = this._componentTypeResolver.getWidgetType(widget.type);
+        let defaultSize = widgetType.defaultSize;
+
+        if (!widget.size) {
+            widget.size = {
+                height: defaultSize.height,
+                width: defaultSize.width
+            };
+        }
+
+        widget.position = {};
+
         return this._storage.addWidget(widget);
     }
 

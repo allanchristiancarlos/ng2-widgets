@@ -29,7 +29,11 @@ export class WidgetStockChartModule {
         this._widgetManagerSerivce.registerWidgetType({
             name: 'Stock Chart',
             type: 'stock_chart',
-            component: WidgetStockChartComponent
+            component: WidgetStockChartComponent,
+            defaultSize: {
+                width: 6,
+                height: 3
+            }
         });
     }
 }

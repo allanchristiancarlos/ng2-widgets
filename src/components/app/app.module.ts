@@ -5,6 +5,7 @@ import {HttpModule} from '@angular/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { Ng2HighchartsModule } from "ng2-highcharts";
+import { MaterialModule } from "@angular/material";
 
 // App
 import { AppComponent } from './app.component';
@@ -21,12 +22,13 @@ import { WidgetManagerModule } from "../widget-manager/widget-manager.module";
     HttpModule,
     BrowserAnimationsModule,
     Ng2HighchartsModule,
+    MaterialModule,
     WidgetModule,
+    WidgetManagerModule,
     WidgetVisitsModule,
     WidgetPieChartModule,
     WidgetStockChartModule,
-    WidgetHeatmapModule,
-    WidgetManagerModule
+    WidgetHeatmapModule
   ],
   declarations: [
     AppComponent

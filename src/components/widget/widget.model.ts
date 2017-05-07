@@ -1,7 +1,7 @@
 import { Type } from "@angular/core";
 
 export interface WidgetModel {
-    id: number;
+    id?: number;
     title?: string;
     type: string;
     data: any; 
@@ -12,7 +12,7 @@ export interface WidgetModel {
     };
     
     size?: {
-        height?: number,
-        width?: number
+        height: number,
+        width: number
     };
 }

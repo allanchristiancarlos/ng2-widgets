@@ -14,6 +14,7 @@ import { WidgetLoaderComponent } from "./widget-loader.component";
 import { WidgetsComponent } from "./widgets.component";
 import { AddWidgetButtonDirective } from "./add-widget-button.directive";
 import { AddWidgetDialogComponent } from "./add-widget-dialog.component";
+import { AddWidgetSettingsDialogComponent } from "./add-widget-settings-dialog.component";
 
 
 @NgModule({
@@ -30,18 +31,18 @@ import { AddWidgetDialogComponent } from "./add-widget-dialog.component";
         WidgetLoaderComponent,
         WidgetsComponent,
         AddWidgetButtonDirective,
-        AddWidgetDialogComponent
+        AddWidgetDialogComponent,
+        AddWidgetSettingsDialogComponent
     ],
     exports: [
         MaterialModule,
         WidgetDirective,
-        WidgetLoaderComponent,
         WidgetsComponent,
-        AddWidgetButtonDirective,
-        AddWidgetDialogComponent
+        AddWidgetButtonDirective
     ],
     entryComponents: [
-        AddWidgetDialogComponent
+        AddWidgetDialogComponent,
+        AddWidgetSettingsDialogComponent
     ]
 })
 export class WidgetModule {

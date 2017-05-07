@@ -41,6 +41,7 @@ export class WidgetManagerStorageLocal implements IWidgetManagerStorage {
             this.getAllWidgets()
                 .subscribe(
                     widgets => {
+                        widget.id = widgets.length + 1;
                         widgets.push(widget);
                         localStorage.setItem(WIDGET_MANAGER_STORAGE_LOCAL_KEY, JSON.stringify(widgets));
                         observer.next(true);

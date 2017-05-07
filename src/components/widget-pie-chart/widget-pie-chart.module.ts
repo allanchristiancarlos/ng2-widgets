@@ -23,7 +23,11 @@ export class WidgetPieChartModule {
         this._widgetManagerSerivce.registerWidgetType({
             name: 'Pie Chart',
             type: 'pie_chart',
-            component: WidgetPieChartComponent
+            component: WidgetPieChartComponent,
+            defaultSize: {
+                width: 4,
+                height: 3
+            }
         });
     }
 }

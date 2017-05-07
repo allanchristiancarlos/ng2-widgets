@@ -1,5 +1,5 @@
 // Angular
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 // App
 import { WidgetModel } from "../widget/widget.model";
@@ -13,11 +13,11 @@ export class AppComponent implements OnInit {
     widgets: WidgetModel[];
 
     constructor(
-        private widgetManagerService: WidgetManagerService
+        private _widgetManagerService: WidgetManagerService
     ) {}
 
     ngOnInit() {
-        this.widgetManagerService.getWidgets()
+        this._widgetManagerService.getWidgets()
             .subscribe(
                 widgets => this.widgets = widgets
             );

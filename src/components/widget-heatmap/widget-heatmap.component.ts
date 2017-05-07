@@ -25,7 +25,7 @@ export class WidgetHeatmapComponent implements WidgetComponent, OnInit {
 
 
 			title: {
-				text: this.widget.data.chart.title
+				text: this.widget.title
 			},
 
 			xAxis: {
