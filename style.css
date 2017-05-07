@@ -11,7 +11,7 @@ body {
   padding: 10px 0 30px;
 }
 
-.page-header {
+.page-header h1 {
   color: #fff;
 }
 
@@ -52,7 +52,7 @@ body {
 }
 
 .widget__action-delete {
-  color: #f44336;
+  color: #ff5722;
 }
 
 .widget__body {

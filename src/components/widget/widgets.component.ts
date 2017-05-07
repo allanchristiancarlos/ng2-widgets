@@ -1,7 +1,6 @@
 import { Component, Input, HostBinding, AfterViewInit, ElementRef } from "@angular/core";
 import { WidgetModel } from "./widget.model";
 import { WidgetManagerService } from "../widget-manager/widget-manager.service";
-import { Material }
 
 @Component({
     selector: 'widgets',
@@ -54,7 +53,7 @@ export class WidgetsComponent implements AfterViewInit {
                 widget.position.x = item.x;
                 widget.position.y = item.y;
 
-                this._widgetManagerService.updateWidget(widget)
+                this._widgetManagerService.updateWidget(widget.id, widget)
                     .subscribe(
                         success => console.log(success)
                     );

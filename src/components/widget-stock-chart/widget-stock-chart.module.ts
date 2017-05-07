@@ -4,6 +4,7 @@ import { Ng2HighchartsModule } from 'ng2-highcharts';
 import { WidgetStockChartComponent } from "./widget-stock-chart.component";
 import { HttpModule } from "@angular/http";
 import { WidgetStockChartService } from "./widget-stock-chart.service";
+import { WidgetManagerService } from "../widget-manager/widget-manager.service";
 
 @NgModule({
     imports: [
@@ -22,5 +23,13 @@ import { WidgetStockChartService } from "./widget-stock-chart.service";
     ]
 })
 export class WidgetStockChartModule {
-    
+    constructor(
+        private _widgetManagerSerivce: WidgetManagerService
+    ) {
+        this._widgetManagerSerivce.registerWidgetType({
+            name: 'Stock Chart',
+            type: 'stock_chart',
+            component: WidgetStockChartComponent
+        });
+    }
 }

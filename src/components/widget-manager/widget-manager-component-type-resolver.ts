@@ -1,18 +1,14 @@
 import { Type, Injectable } from "@angular/core";
-import { WidgetPieChartComponent } from "../widget-pie-chart/widget-pie-chart.component";
-import { WidgetStockChartComponent } from "../widget-stock-chart/widget-stock-chart.component";
-import { WidgetHeatmapComponent } from "../widget-heatmap/widget-heatmap.component";
+import { WidgetManagerWidgetTypesService } from "./widget-manager-widget-types.service";
 
 @Injectable()
 export class WidgetManagerComponentTypeResolver {
+    constructor(
+        public _widgetTypesService: WidgetManagerWidgetTypesService
+    ) {}
+    
     resolve(type: string) : Type<any> {
-        switch(type) {
-            case 'pie_chart':
-                return WidgetPieChartComponent;
-            case 'stock_chart':
-                return WidgetStockChartComponent;
-            case 'heatmap':
-                return WidgetHeatmapComponent;
-        }
+        return this._widgetTypesService.getAll()
+            .find(widgetType => widgetType.type === type).component;
     }
 }

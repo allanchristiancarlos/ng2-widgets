@@ -11,13 +11,17 @@ import 'rxjs/add/operator/map';
 import { WidgetModel } from "../widget/widget.model";
 import { WidgetManagerStorageLocal } from "./widget-manager-storage-local";
 import { WidgetManagerComponentTypeResolver } from "./widget-manager-component-type-resolver";
+import { WidgetComponent } from "../widget/widget.component";
+import { WidgetManagerWidgetTypesService } from "./widget-manager-widget-types.service";
+import { IWidgetTypeData } from "./i-widget-type-data";
 
 @Injectable()
 export class WidgetManagerService {
 
     constructor(
         private _storage: WidgetManagerStorageLocal,
-        private _componentTypeResolver: WidgetManagerComponentTypeResolver
+        private _componentTypeResolver: WidgetManagerComponentTypeResolver,
+        private _widgetTypesService: WidgetManagerWidgetTypesService
     ) {}
 
     getWidgets(): Observable<WidgetModel[]> {
@@ -42,7 +46,15 @@ export class WidgetManagerService {
         return this._storage.deleteByWidgetId(widgetId);
     }
     
-    updateWidget(widget: WidgetModel): Observable<boolean> {
-        return this._storage.updateWidget(widget);
+    updateWidget(widgetId: number, widget: WidgetModel): Observable<boolean> {
+        return this._storage.updateWidget(widgetId, widget);
+    }
+
+    registerWidgetType(data: IWidgetTypeData) : void {
+        return this._widgetTypesService.register(data);
+    }
+
+    getWidgetTypes() : IWidgetTypeData[] {
+        return this._widgetTypesService.getAll();
     }
 }

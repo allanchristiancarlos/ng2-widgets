@@ -49,12 +49,12 @@ export class WidgetManagerStorageLocal implements IWidgetManagerStorage {
         });
     }
 
-    updateWidget(widget: WidgetModel): Observable<boolean> {
+    updateWidget(widgetId: number, widget: WidgetModel): Observable<boolean> {
         return new Observable((observer: Observer<any>) => {
             this.getAllWidgets()
                 .map(widgets => {
                     return widgets.map(w => {
-                        if (w.id == widget.id) {
+                        if (w.id == widgetId) {
                             return widget;
                         }
 
